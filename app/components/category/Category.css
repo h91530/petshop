@@ -1,0 +1,5 @@
+.category_wrap {}
+.category_wrap ul {display: flex; align-items: center; justify-content: center; gap: 30px;}
+.category_wrap ul li a {background: #f6f6f6; border-radius: 100px; padding: 5px 25px;}
+.category_wrap ul li a:hover {background: #f4e1d2;}
+.category_wrap ul li.active a {background: #f4e1d2;}

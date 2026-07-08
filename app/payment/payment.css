@@ -1,0 +1,41 @@
+.payment_wrap {padding: 40px 0 80px;}
+.payment_wrap .inner {max-width: 640px; margin: 0 auto;}
+
+.payment_wrap .title_wrap {margin-bottom: 40px; text-align: center;}
+.payment_wrap .title_wrap h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #3d2c22;
+}
+.payment_wrap .title_wrap h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: #C87E5A;
+}
+
+.payment_wrap .pay_btn {
+  width: 100%;
+  height: 56px;
+  margin-top: 24px;
+  border: none;
+  border-radius: 12px;
+  background: #C87E5A;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(200, 126, 90, 0.3);
+}
+.payment_wrap .pay_btn:hover:not(:disabled) {background: #B06844;}
+.payment_wrap .pay_btn:disabled {background: #d8c8bb; cursor: not-allowed; box-shadow: none;}

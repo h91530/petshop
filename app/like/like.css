@@ -1,0 +1,110 @@
+.like_wrap {padding: 40px 0 80px;}
+.like_wrap .inner {max-width: 900px; margin: 0 auto;}
+
+.like_wrap .inner .title_wrap {margin-bottom: 48px; text-align: center;}
+.like_wrap .inner .title_wrap h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #3d2c22;
+}
+.like_wrap .inner .title_wrap h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: #FF5A7A;
+}
+
+/* 비어있을 때 */
+.like_wrap .empty_box {text-align: center; padding: 60px 0;}
+.like_wrap .empty_box .empty_msg {font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px;}
+.like_wrap .empty_box .go_shop {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 10px;
+  background: #C87E5A;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.like_wrap .empty_box .go_shop:hover {background: #B06844;}
+
+/* 찜 목록 */
+.like_wrap .like_list {display: flex; flex-direction: column; gap: 16px;}
+.like_wrap .like_item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+}
+
+.like_wrap .like_item .item_link {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 auto;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.like_wrap .like_item .img_box {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #faf6f2;
+}
+.like_wrap .like_item .img_box img {display: block; object-fit: cover;}
+
+.like_wrap .like_item .item_info {flex: 1 1 auto; min-width: 0;}
+.like_wrap .like_item .item_info .item_name {font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #333;}
+.like_wrap .like_item .item_info .item_desc {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.like_wrap .like_item .item_info .item_like {font-size: 14px; font-weight: 700; color: #FF5A7A;}
+
+/* 오른쪽: 가격 + 찜 취소 */
+.like_wrap .like_item .item_right {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+.like_wrap .like_item .item_price {font-size: 22px; font-weight: 800; color: #C87E5A;}
+.like_wrap .like_item .item_price em {font-size: 15px; font-weight: 700; font-style: normal; margin-left: 2px;}
+
+.like_wrap .like_item .unlike_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #FF5A7A;
+  border-radius: 10px;
+  background: #FF5A7A;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.like_wrap .like_item .unlike_btn:hover {background: #e8455a; border-color: #e8455a;}
+.like_wrap .like_item .unlike_btn:disabled {opacity: 0.6; cursor: not-allowed;}

@@ -1,0 +1,6 @@
+.search_wrap {margin-bottom: 50px;}
+.search_wrap .inner {display: flex; justify-content: center; width: 100%;}
+.search_wrap form {border: 1px solid #000; border-radius: 100px; width: 20%; text-align: center; height: 50px; display: flex; align-items: center; justify-content: center;}
+.search_wrap input {width: 80%; height: 90%; padding: 0; margin: 0; border: none; outline: none;}
+.search_wrap input::-webkit-search-cancel-button {display: none;}
+.search_wrap button {background: none; cursor: pointer;}

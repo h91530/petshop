@@ -1,0 +1,67 @@
+header {padding: 20px 0;}
+header .inner {display: flex; justify-content: space-between; align-items: center;}
+header .inner img {object-fit: contain;}
+.top_bar {background : #F4E1D2; width: 100%; height: 40px;}
+
+header .inner .nav {display: flex; align-items: center; gap: 24px; font-size: 18px;}
+header .inner .nav li {font-weight: 600;}
+
+/* 네비 링크 */
+header .inner .nav .nav_link a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+header .inner .nav .nav_link a svg {
+  transition: transform 0.15s ease;
+}
+header .inner .nav .nav_link a:hover {color: #C87E5A;}
+header .inner .nav .nav_link a:hover svg {transform: scale(1.15);}
+header .inner .nav .like_link a:hover {color: #FF5A7A;}
+
+/* 숫자 뱃지 (좋아요/장바구니 공통) */
+header .inner .nav .nav_link .count_badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #C87E5A;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* 좋아요 뱃지만 로즈핑크 (공통 규칙 뒤에 둬서 덮어쓰기) */
+header .inner .nav .like_link .count_badge {background: #FF5A7A;}
+
+/* 유저 이름 뱃지 */
+header .inner .nav .user_badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #F4E1D2;
+  color: #8A5A3B;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 로그아웃 버튼 */
+header .inner .nav .logout_btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: #C87E5A;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+header .inner .nav .logout_btn:hover {background: #B06844;}
