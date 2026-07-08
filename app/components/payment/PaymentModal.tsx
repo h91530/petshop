@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 import { useCartCount } from "@/app/hooks/useCart";
+import { useTestConfirm } from "@/app/hooks/useTestConfirm";
 import { useAuthStore } from "@/app/store/authStore";
+import { useToastStore } from "@/app/store/toastStore";
 import { registerDirectOrder } from "@/app/data/order/directOrder";
 import "./PaymentModal.css";
 
@@ -27,6 +30,9 @@ export default function PaymentModal({
 }) {
   const { data: cart } = useCartCount();
   const user = useAuthStore((s) => s.user);
+  const router = useRouter();
+  const showToast = useToastStore((s) => s.showToast);
+  const { mutate: testPay, isPending: testPaying } = useTestConfirm();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const widgetsRef = useRef<any>(null);
@@ -101,9 +107,36 @@ export default function PaymentModal({
     });
   };
 
+  const handleTestPay = () => {
+    const payload = direct
+      ? {
+          type: "direct" as const,
+          productId: direct.productId,
+          optionId: direct.optionId,
+          quantity: direct.quantity,
+        }
+      : { type: "cart" as const };
+
+    testPay(payload, {
+      onSuccess: () => {
+        showToast("테스트 결제가 완료되었어요.");
+        onClose();
+        router.push("/orders");
+      },
+      onError: (err: Error) => {
+        showToast(err.message);
+      },
+    });
+  };
+
   return (
     <div className="pay_overlay" onClick={onClose}>
-      <div className="pay_modal" onClick={(e) => e.stopPropagation()}>
+      {!ready && <div className="pay_loading">결제창을 불러오는 중...</div>}
+
+      <div
+        className={`pay_modal ${ready ? "" : "is_loading"}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="pay_head">
           <h2>결제하기</h2>
           <button type="button" className="pay_close" onClick={onClose} aria-label="닫기">
@@ -116,6 +149,9 @@ export default function PaymentModal({
           <div id="agreement" />
         </div>
 
+        <button type="button" className="pay_test" onClick={handleTestPay} disabled={testPaying}>
+          {testPaying ? "처리 중..." : "테스트 결제하기"}
+        </button>
         <button type="button" className="pay_submit" onClick={handlePay} disabled={!ready}>
           {amount.toLocaleString()}원 결제하기
         </button>

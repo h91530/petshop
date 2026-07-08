@@ -23,6 +23,20 @@
   animation: pay_pop 0.18s ease;
 }
 
+/* 위젯 로딩 중: 레이아웃은 유지(위젯이 정상 로딩됨)하되 화면엔 안 보이게 */
+.pay_modal.is_loading {
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* 로딩 표시 */
+.pay_loading {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .pay_head {
   display: flex;
   align-items: center;
@@ -51,7 +65,7 @@
 
 .pay_submit {
   flex: 0 0 auto;
-  margin: 16px 24px 24px;
+  margin: 0 24px 24px;
   height: 56px;
   border: none;
   border-radius: 12px;
@@ -65,6 +79,21 @@
 }
 .pay_submit:hover:not(:disabled) {background: #B06844;}
 .pay_submit:disabled {background: #d8c8bb; cursor: not-allowed; box-shadow: none;}
+
+.pay_test {
+  flex: 0 0 auto;
+  margin: 16px 24px 12px;
+  height: 52px;
+  border: 1.5px solid #C87E5A;
+  border-radius: 12px;
+  background: #fff;
+  color: #C87E5A;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pay_test:hover {background: #faf0e9;}
 
 @keyframes pay_fade {
   from { opacity: 0; }

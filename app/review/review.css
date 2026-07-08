@@ -1,0 +1,85 @@
+.review_wrap {padding: 40px 0 80px;}
+.review_wrap .inner {max-width: 640px; margin: 0 auto;}
+
+.review_wrap .title_wrap {margin-bottom: 40px; text-align: center;}
+.review_wrap .title_wrap h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #3d2c22;
+}
+.review_wrap .title_wrap h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: #C87E5A;
+}
+
+/* 대상 상품 */
+.review_wrap .review_product {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  margin-bottom: 28px;
+  border: 1px solid #f0e6dd;
+  border-radius: 12px;
+  background: #fdf9f5;
+}
+.review_wrap .review_product .rp_img {
+  flex: 0 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.review_wrap .review_product .rp_img img {display: block; object-fit: cover;}
+.review_wrap .review_product .rp_info {flex: 1 1 auto; min-width: 0;}
+.review_wrap .review_product .rp_name {font-size: 17px; font-weight: 700; color: #333; margin-bottom: 6px;}
+.review_wrap .review_product .rp_option {font-size: 14px; color: #8A5A3B;}
+
+/* 입력 필드 */
+.review_wrap .review_field {display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;}
+.review_wrap .review_field > label {font-size: 15px; font-weight: 700; color: #444;}
+.review_wrap .review_field textarea {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  font-family: inherit;
+}
+.review_wrap .review_field textarea:focus {outline: none; border-color: #C87E5A;}
+
+/* 버튼 */
+.review_wrap .review_btns {display: flex; gap: 10px;}
+.review_wrap .review_btns button {
+  flex: 1 1 0;
+  height: 54px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.review_wrap .review_cancel {
+  border: 1.5px solid #ddd;
+  background: #fff;
+  color: #777;
+}
+.review_wrap .review_cancel:hover {background: #f5f5f5;}
+.review_wrap .review_submit {
+  border: none;
+  background: #C87E5A;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(200, 126, 90, 0.3);
+}
+.review_wrap .review_submit:hover {background: #B06844;}

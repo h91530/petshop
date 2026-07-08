@@ -69,6 +69,16 @@ export default function Header() {
                             </Link>
                         </li>
                     )}
+                    {isLoggedIn && (
+                        <li className="nav_link">
+                            <Link href="/my-reviews">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                    <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z" />
+                                </svg>
+                                <span>내 리뷰</span>
+                            </Link>
+                        </li>
+                    )}
                     {isLoggedIn && userName && <li className="user_badge">{`${userName}님`}</li>}
                     {isLoggedIn && <li className="logout_btn" onClick={logOuthandle}>로그아웃</li>}
                 </ul>

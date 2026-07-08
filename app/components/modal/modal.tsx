@@ -10,6 +10,11 @@ export default function Modal() {
   const [password, setPassword] = useState("");
   const { mutate : login, isPending} = useLogin();
   const closeLoginModal = useModalStore((s) => s.closeLoginModal);
+  const openSignupModal = useModalStore((s) => s.openSignupModal);
+
+const handleLogin = () => {
+  // TODO: 입력한 userId, password 로 로그인 연결
+};
 
 const handleTestLogin = () => {
   login(undefined, {
@@ -48,9 +53,18 @@ const handleTestLogin = () => {
             placeholder="비밀번호를 입력해주세요"
           />
         </div>
-        <button type="button" onClick={handleTestLogin} disabled={isPending}>
+        <button type="button" onClick={handleLogin} disabled={isPending}>
+          로그인
+        </button>
+        <button type="button" className="test_login" onClick={handleTestLogin} disabled={isPending}>
           {isPending ? "로그인 중..." : "테스트용 로그인"}
         </button>
+        <p className="modal_switch">
+          아직 회원이 아니신가요?{" "}
+          <button type="button" className="switch_link" onClick={openSignupModal}>
+            회원가입
+          </button>
+        </p>
       </div>
     </div>
   );

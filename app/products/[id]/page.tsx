@@ -9,6 +9,7 @@ import { useCart } from '@/app/hooks/useCart';
 import type { AddCartPayload } from '@/app/data/cart/addCart';
 import { useToastStore } from '@/app/store/toastStore';
 import PaymentModal from '@/app/components/payment/PaymentModal';
+import ReviewSection from '@/app/components/review/ReviewSection';
 
 export default function ProductDetails() {
   const { data: products, isLoading, isError } = useProducts();
@@ -141,6 +142,8 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
+
+        <ReviewSection productId={product.id} />
       </div>
 
       {payOpen && selectedOption && (

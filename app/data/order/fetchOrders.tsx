@@ -5,6 +5,8 @@ export interface OrderItem {
   unit_price: number;
   quantity: number;
   image_url: string;
+  reviewable: boolean; // PAID + 결제 후 3일 이내 + 미작성
+  reviewed: boolean;   // 이미 작성함
 }
 
 export interface Order {
@@ -13,6 +15,7 @@ export interface Order {
   amount: number;
   status: string;
   created_at: string;
+  review_deadline: string; // 리뷰 마감 시각 (ISO)
   items: OrderItem[];
 }
 

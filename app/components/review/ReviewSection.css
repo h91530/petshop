@@ -1,0 +1,65 @@
+.review_section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px solid #f0e6dd;
+}
+
+.review_section .review_summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.review_section .review_summary h3 {font-size: 22px; font-weight: 700; color: #3d2c22;}
+.review_section .summary_score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.review_section .summary_score strong {font-size: 20px; font-weight: 800; color: #FFB800;}
+.review_section .summary_score span {font-size: 15px; color: #999;}
+
+.review_section .review_empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 15px;
+  color: #999;
+}
+
+/* 정렬 드롭다운 */
+.review_section .review_sort {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.review_section .review_sort select {
+  height: 38px;
+  padding: 0 34px 0 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #444;
+  background: #fff;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.review_section .review_sort select:focus {outline: none; border-color: #C87E5A;}
+
+.review_section .review_list {display: flex; flex-direction: column; gap: 20px;}
+.review_section .review_row {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+.review_section .review_top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.review_section .review_user {font-size: 14px; font-weight: 700; color: #444;}
+.review_section .review_date {font-size: 13px; color: #aaa; margin-left: auto;}
+.review_section .review_content {font-size: 15px; line-height: 1.6; color: #555; white-space: pre-line;}

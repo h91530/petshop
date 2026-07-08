@@ -3,6 +3,7 @@
 import { useModalStore } from "@/app/store/modalStore";
 import useAuthCheck from "@/app/hooks/useAuthCheck";
 import Modal from "../modal/modal";
+import SignupModal from "../modal/SignupModal";
 
 export default function AuthGate({
   children,
@@ -10,12 +11,16 @@ export default function AuthGate({
   children: React.ReactNode;
 }) {
   const isLoginModalOpen = useModalStore((state) => state.isLoginModalOpen);
+  const isSignupModalOpen = useModalStore((state) => state.isSignupModalOpen);
   const { isError, isFetched } = useAuthCheck();
+
+  const showAuthModal = isFetched && isError;
 
   return (
     <>
       {children}
-      {isFetched && isError && isLoginModalOpen && <Modal />}
+      {showAuthModal && isLoginModalOpen && <Modal />}
+      {showAuthModal && isSignupModalOpen && <SignupModal />}
     </>
   );
 }

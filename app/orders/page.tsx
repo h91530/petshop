@@ -88,6 +88,18 @@ function OrdersContent() {
                             {item.unit_price.toLocaleString()}원 · {item.quantity}개
                           </p>
                         </div>
+                        {item.reviewable ? (
+                          <Link
+                            href={`/review?orderId=${order.order_id}&productId=${item.product_id}&productName=${encodeURIComponent(item.product_name)}&optionName=${encodeURIComponent(item.option_name)}`}
+                            className="review_btn"
+                          >
+                            리뷰 쓰기
+                          </Link>
+                        ) : item.reviewed ? (
+                          <span className="review_done">작성 완료</span>
+                        ) : (
+                          <span className="review_expired">기간 만료</span>
+                        )}
                       </li>
                     ))}
                   </ul>

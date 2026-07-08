@@ -17,6 +17,8 @@ export interface ProductType {
   liked: boolean,
   detail: string,
   options: ProductOption[],
+  rating_avg: number,
+  rating_count: number,
 }
 
 interface ApiResponse<T> {
@@ -37,6 +39,8 @@ interface RawProduct {
   liked: boolean;
   detail: string,
   options: ProductOption[],
+  rating_avg: number,
+  rating_count: number,
 }
 
 export async function fetchProducts(): Promise<ProductType[]> {
@@ -63,9 +67,11 @@ export async function fetchProducts(): Promise<ProductType[]> {
       category: item.category,
       image: `/${item.image_url}`,
       like_count: item.like_count,
-      liked: item.liked,   
+      liked: item.liked,
       detail: item.detail,
-      options: item.options      
+      options: item.options,
+      rating_avg: item.rating_avg ?? 0,
+      rating_count: item.rating_count ?? 0,
     }));
   } catch (err) {
     console.error(err);

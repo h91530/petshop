@@ -1,0 +1,23 @@
+.star_rating {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.star_rating .star {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  line-height: 1;
+  color: #e0d5cb;
+  cursor: pointer;
+  transition: color 0.12s ease;
+}
+.star_rating .star.filled {
+  color: #FFB800;
+}
+.star_rating.readonly .star {
+  cursor: default;
+}

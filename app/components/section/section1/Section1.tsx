@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { useSearchStore } from '@/app/store/useSearchStore';
 import {useProducts} from '../../../hooks/useProducts'
 import ProductActions from './ProductActions'
+import StarRating from '@/app/components/review/StarRating'
 function Section1() {
   const searchParams = useSearchParams();
   const category = searchParams.get('category') || 'all';
@@ -43,6 +44,10 @@ const filtered = (products ?? [])
                   </div>
                   <h2>{product.name}</h2>
                   <p>{product.desc}</p>
+                  <div className="rating_row">
+                    <StarRating rating={Math.round(product.rating_avg)} size={16} />
+                    <span className="review_count">({product.rating_count})</span>
+                  </div>
                   <strong><b>{product.price.toLocaleString()}</b>원</strong>
                 </Link>
                 <ProductActions productId={product.id} productLike={product.liked} />

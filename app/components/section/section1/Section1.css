@@ -4,6 +4,8 @@
 #section1 .inner h2 {margin-bottom: 5px; font-size: 18px; min-height: 54px;}
 #section1 .inner p {margin-bottom: 10px; font-size: 16px; min-height: 72px;}
 #section1 .inner strong {font-size: 22px; margin-bottom: 10px;}
+#section1 .inner .rating_row {display: flex; align-items: center; gap: 6px; margin-bottom: 10px;}
+#section1 .inner .rating_row .review_count {font-size: 13px; color: #999;}
 #section1 .inner ul {display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;}
 #section1 .inner ul li {
   display: flex;

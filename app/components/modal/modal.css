@@ -11,3 +11,7 @@
 .modal_wrap .inner input {height: 52px; padding: 0 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px;}
 
 .modal_wrap .inner button {height: 52px; margin-top: 10px; border: none; border-radius: 6px; background: #222; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer;}
+.modal_wrap .inner button.test_login {margin-top: 0;}
+
+.modal_wrap .inner .modal_switch {margin-top: 4px; text-align: center; font-size: 14px; color: #888;}
+.modal_wrap .inner .modal_switch .switch_link {display: inline; width: auto; height: auto; margin: 0; padding: 0; background: none; border: none; color: #C87E5A; font-size: 14px; font-weight: 700; text-decoration: underline; cursor: pointer;}
