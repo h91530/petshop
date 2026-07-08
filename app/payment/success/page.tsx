@@ -1,12 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { usePaymentConfirm } from "@/app/hooks/usePaymentConfirm";
 import "../payment.css";
 
 export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={<p className="loading">로딩중...</p>}>
+      <SuccessContent />
+    </Suspense>
+  );
+}
+
+function SuccessContent() {
   const params = useSearchParams();
   const paymentKey = params.get("paymentKey");
   const orderId = params.get("orderId");

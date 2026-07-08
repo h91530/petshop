@@ -9,8 +9,10 @@ export default function Home() {
   return (
     <>
       <SearchBox></SearchBox>
-      <Category></Category>
-      <Section1></Section1>
+      <Suspense fallback={null}>
+        <Category></Category>
+        <Section1></Section1>
+      </Suspense>
     </>
   );
 }

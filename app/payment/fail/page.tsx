@@ -1,11 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import "../payment.css";
 
 export default function PaymentFailPage() {
+  return (
+    <Suspense fallback={<p className="loading">로딩중...</p>}>
+      <FailContent />
+    </Suspense>
+  );
+}
+
+function FailContent() {
   const params = useSearchParams();
   const code = params.get("code");
   const message = params.get("message");
