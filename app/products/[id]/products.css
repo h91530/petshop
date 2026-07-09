@@ -66,7 +66,7 @@
   padding: 0 16px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   color: #333;
   background: #fff;
   cursor: pointer;
@@ -198,7 +198,7 @@
   .detail_txt .detail_desc_area p {font-size: 14px; line-height: 1.7; text-align: left;}
 
   .detail_txt .option_area {width: 100%; max-width: 360px; margin: 0 auto 18px; align-items: center;}
-  .detail_txt .option_area select {width: 100%; height: 48px; font-size: 14px;}
+  .detail_txt .option_area select {width: 100%; height: 48px; font-size: 16px;}
 
   .detail_txt .qty_area {width: 100%; max-width: 360px; margin: 0 auto 18px;}
   .detail_txt .qty_area .qty {height: 40px;}

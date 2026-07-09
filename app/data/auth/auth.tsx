@@ -1,8 +1,8 @@
 import { useAuthStore } from "@/app/store/authStore";
+import { apiFetch } from "@/app/lib/apiClient";
 
 export async function checkAuth() {
-  const res = await fetch("https://yangti.shop/searching/me", {
-    credentials: "include",
+  const res = await apiFetch("/me", {
     cache: "no-store",
   });
 
@@ -17,9 +17,8 @@ export async function checkAuth() {
 }
 
 export async function logoutRequest() {
-  const res = await fetch("https://yangti.shop/searching/logout", {
+  const res = await apiFetch("/logout", {
     method: "POST",
-    credentials: "include",
   });
 
   if (!res.ok) {

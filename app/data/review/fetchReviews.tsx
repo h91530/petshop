@@ -12,10 +12,10 @@ export interface ReviewsResponse {
   rating_count: number;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function fetchReviews(productId: number): Promise<ReviewsResponse> {
-  const res = await fetch(`https://yangti.shop/searching/reviews?productId=${productId}`, {
-    credentials: "include",
-  });
+  const res = await apiFetch(`/reviews?productId=${productId}`);
 
   if (!res.ok) {
     throw new Error("리뷰를 불러오지 못했습니다.");

@@ -21,10 +21,10 @@ export interface CartResponse {
   total_price: number;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function cartCount(): Promise<CartResponse> {
-  const res = await fetch("https://yangti.shop/searching/cart", {
-    credentials: "include",
-  });
+  const res = await apiFetch("/cart");
 
   if (!res.ok) {
     throw new Error("장바구니를 불러오지 못했습니다.");

@@ -4,10 +4,11 @@ export interface ConfirmPayload {
   amount: number;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function confirmPayment({ paymentKey, orderId, amount }: ConfirmPayload) {
-  const res = await fetch("https://yangti.shop/searching/payments/confirm", {
+  const res = await apiFetch("/payments/confirm", {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ paymentKey, orderId, amount }),
   });

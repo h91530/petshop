@@ -5,10 +5,11 @@ export interface CreateReviewPayload {
   content: string;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function createReview({ orderId, productId, rating, content }: CreateReviewPayload) {
-  const res = await fetch("https://yangti.shop/searching/reviews", {
+  const res = await apiFetch("/reviews", {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ orderId, productId, rating, content }),
   });

@@ -40,10 +40,10 @@ export interface OrdersResponse {
   data: Order[];
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function fetchOrders(): Promise<OrdersResponse> {
-  const res = await fetch("https://yangti.shop/searching/orders", {
-    credentials: "include",
-  });
+  const res = await apiFetch("/orders");
 
   if (res.status === 401) {
     throw new Error("로그인이 필요합니다");

@@ -6,10 +6,11 @@ export interface DirectOrderPayload {
 }
 
 // 결제 전 단일상품 주문을 서버에 등록 (confirm 이 이 주문 기준으로 금액 검증)
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function registerDirectOrder(payload: DirectOrderPayload) {
-  const res = await fetch("https://yangti.shop/searching/orders/direct", {
+  const res = await apiFetch("/orders/direct", {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });

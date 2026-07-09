@@ -1,3 +1,5 @@
+import { apiFetch } from "@/app/lib/apiClient";
+
 export interface UpdateMePayload {
   name?: string;
   postcode?: string;
@@ -7,9 +9,8 @@ export interface UpdateMePayload {
 }
 
 export async function updateMe(payload: UpdateMePayload) {
-  const res = await fetch("https://yangti.shop/searching/me", {
+  const res = await apiFetch("/me", {
     method: "PATCH",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });

@@ -3,10 +3,11 @@ export interface QtyPayload {
   quantity: number;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function plusMinus({ cartId, quantity }: QtyPayload) {
-  const res = await fetch(`https://yangti.shop/searching/cart/item/${cartId}`, {
+  const res = await apiFetch(`/cart/item/${cartId}`, {
     method: "PATCH",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ quantity }),
   });

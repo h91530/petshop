@@ -1,13 +1,14 @@
+import { apiFetch } from "@/app/lib/apiClient";
+
 export interface LoginPayload {
   username: string;
   password: string;
 }
 
 export async function login(payload: LoginPayload) {
-  const res = await fetch("https://yangti.shop/searching/login", {
+  const res = await apiFetch("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify(payload),
   });
 

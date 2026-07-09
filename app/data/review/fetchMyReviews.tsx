@@ -15,10 +15,10 @@ export interface MyReviewsResponse {
   data: MyReview[];
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function fetchMyReviews(): Promise<MyReviewsResponse> {
-  const res = await fetch("https://yangti.shop/searching/reviews/me", {
-    credentials: "include",
-  });
+  const res = await apiFetch("/reviews/me");
 
   if (res.status === 401) {
     throw new Error("로그인이 필요합니다");

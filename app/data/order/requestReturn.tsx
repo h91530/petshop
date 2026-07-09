@@ -1,12 +1,13 @@
+import { apiFetch } from "@/app/lib/apiClient";
+
 export interface ReturnPayload {
   orderId: string;
   reason: string;
 }
 
 export async function requestReturn({ orderId, reason }: ReturnPayload) {
-  const res = await fetch(`https://yangti.shop/searching/orders/${orderId}/return`, {
+  const res = await apiFetch(`/orders/${orderId}/return`, {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ reason }),
   });

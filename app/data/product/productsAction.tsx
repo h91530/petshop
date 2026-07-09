@@ -1,12 +1,11 @@
-import React from 'react'
+import { apiFetch } from '@/app/lib/apiClient'
 
 export async function productsAction(id : number) {
   try {
-    const res = await fetch(
-      `https://yangti.shop/searching/products/${id}/like`,
+    const res = await apiFetch(
+      `/products/${id}/like`,
       {
         method: "POST",
-        credentials: "include"
       }
     );
 

@@ -43,11 +43,11 @@ interface RawProduct {
   rating_count: number,
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function fetchProducts(): Promise<ProductType[]> {
   try {
-    const res = await fetch("https://yangti.shop/searching/", {
-      credentials: "include",
-    });
+    const res = await apiFetch("/");
 
     if (!res.ok) {
       throw new Error("상품 목록을 불러오지 못했습니다");

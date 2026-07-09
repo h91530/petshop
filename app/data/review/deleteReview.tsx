@@ -1,7 +1,8 @@
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function deleteReview(reviewId: number) {
-  const res = await fetch(`https://yangti.shop/searching/reviews/${reviewId}`, {
+  const res = await apiFetch(`/reviews/${reviewId}`, {
     method: "DELETE",
-    credentials: "include",
   });
 
   if (res.status === 401) {

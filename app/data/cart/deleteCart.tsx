@@ -1,10 +1,11 @@
 // 한 개든 여러 개든 배열로 받아서 /cart/items 로 보냄
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function deleteCart(cartIds: number | number[]) {
   const ids = Array.isArray(cartIds) ? cartIds : [cartIds]; // 단건이면 배열로 감싸기
 
-  const res = await fetch(`https://yangti.shop/searching/cart/items`, {
+  const res = await apiFetch(`/cart/items`, {
     method: "DELETE",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ cart_ids: ids }),
   });

@@ -8,7 +8,7 @@
 
 .modal_wrap .inner .field label {font-size: 14px; font-weight: 600; color: #333;}
 
-.modal_wrap .inner input {flex-shrink: 0; box-sizing: border-box; height: 52px; padding: 0 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px;}
+.modal_wrap .inner input {flex-shrink: 0; box-sizing: border-box; height: 52px; padding: 0 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px;}
 
 .modal_wrap .inner button {flex-shrink: 0; box-sizing: border-box; height: 52px; margin-top: 10px; border: none; border-radius: 6px; background: #222; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer;}
 .modal_wrap .inner button.test_login {margin-top: 0;}
@@ -36,7 +36,7 @@
   .modal_wrap .inner {gap: 12px; max-height: 92vh; padding: 32px 24px;}
   .modal_wrap .inner h2 {font-size: 19px; margin-bottom: 2px;}
   .modal_wrap .inner .field label {font-size: 13px;}
-  .modal_wrap .inner input {height: 46px; font-size: 14px;}
+  .modal_wrap .inner input {height: 46px; font-size: 16px;}
   .modal_wrap .inner button {height: 46px; font-size: 15px;}
   .modal_wrap .inner .addr_row .addr_find {height: 46px; padding: 0 14px; font-size: 14px;}
 }

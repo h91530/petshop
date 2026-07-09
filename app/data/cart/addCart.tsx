@@ -4,10 +4,11 @@ export interface AddCartPayload {
   quantity?: number;
 }
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function addCart({ productId, optionId, quantity = 1 }: AddCartPayload) {
-  const res = await fetch(`https://yangti.shop/searching/cart/${productId}`, {
+  const res = await apiFetch(`/cart/${productId}`, {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ option_id: optionId, quantity }),
   });

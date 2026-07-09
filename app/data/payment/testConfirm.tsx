@@ -11,10 +11,11 @@ interface DirectTestPayload {
 }
 export type TestConfirmPayload = CartTestPayload | DirectTestPayload;
 
+import { apiFetch } from "@/app/lib/apiClient";
+
 export async function testConfirm(payload: TestConfirmPayload) {
-  const res = await fetch("https://yangti.shop/searching/payments/test-confirm", {
+  const res = await apiFetch("/payments/test-confirm", {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });

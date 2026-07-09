@@ -1,3 +1,5 @@
+import { apiFetch } from "@/app/lib/apiClient";
+
 export interface signUp {
   username: string;
   password: string;
@@ -9,9 +11,8 @@ export interface signUp {
 }
 
 export async function signup(payload: signUp) {
-  const res = await fetch("https://yangti.shop/searching/signup", {
+  const res = await apiFetch("/signup", {
     method: "POST",
-    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });

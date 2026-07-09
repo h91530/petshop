@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import "../payment.css";
+import { apiFetch } from "@/app/lib/apiClient";
 
 export default function PaymentFailPage() {
   return (
@@ -24,9 +25,8 @@ function FailContent() {
   useEffect(() => {
     if (canceled.current || !orderId) return;
     canceled.current = true;
-    fetch(`https://yangti.shop/searching/orders/${orderId}/cancel`, {
+    apiFetch(`/orders/${orderId}/cancel`, {
       method: "POST",
-      credentials: "include",
     }).catch(() => {});
   }, [orderId]);
 
