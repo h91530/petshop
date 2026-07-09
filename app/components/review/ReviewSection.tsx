@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ChangeEvent } from "react";
+import { memo, useMemo, useState, type ChangeEvent } from "react";
 import StarRating from "./StarRating";
 import Pagination from "@/app/components/pagination/Pagination";
 import { useReviews } from "@/app/hooks/useReviews";
@@ -9,7 +9,7 @@ import "./ReviewSection.css";
 const PAGE_SIZE = 3;
 type SortKey = "latest" | "rating";
 
-export default function ReviewSection({ productId }: { productId: number }) {
+function ReviewSection({ productId }: { productId: number }) {
   const { data, isLoading, isError } = useReviews(productId);
   const [sort, setSort] = useState<SortKey>("latest");
   const [page, setPage] = useState(1);
@@ -81,3 +81,5 @@ export default function ReviewSection({ productId }: { productId: number }) {
     </div>
   );
 }
+
+export default memo(ReviewSection);

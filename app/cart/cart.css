@@ -50,15 +50,24 @@
   border: 1px solid #eee;
   border-radius: 14px;
 }
+.cart_wrap .cart_item .item_top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .cart_wrap .cart_item .img_box {
   flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
   border-radius: 12px;
   overflow: hidden;
   background: #faf6f2;
 }
-.cart_wrap .cart_item .img_box img {display: block; object-fit: cover;}
+.cart_wrap .cart_item .img_box img {display: block; width: 100%; height: 100%; object-fit: cover;}
 
-.cart_wrap .cart_item .item_info {flex: 1 1 auto;}
+.cart_wrap .cart_item .item_info {flex: 1 1 auto; min-width: 0;}
 .cart_wrap .cart_item .item_info .item_name {font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #333;}
 .cart_wrap .cart_item .item_info .item_option {
   display: inline-block;
@@ -176,3 +185,38 @@
   box-shadow: 0 4px 12px rgba(200, 126, 90, 0.3);
 }
 .cart_wrap .cart_summary .order_btn:hover {background: #B06844;}
+
+/* ===== 반응형 ===== */
+@media (max-width: 700px) {
+  .cart_wrap {padding: 28px 0 60px;}
+  .cart_wrap .inner .title_wrap {margin-bottom: 32px;}
+  .cart_wrap .inner .title_wrap h2 {font-size: 26px;}
+
+  .cart_wrap .cart_item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+  .cart_wrap .cart_item .item_top {gap: 16px;}
+  .cart_wrap .cart_item .img_box {width: 100px; height: 100px;}
+  .cart_wrap .cart_item .item_info .item_name {font-size: 16px; margin-bottom: 6px;}
+  .cart_wrap .cart_item .item_info .item_unit {font-size: 13px; margin-bottom: 10px;}
+
+  .cart_wrap .cart_item .item_right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+  }
+  .cart_wrap .cart_item .item_price strong {font-size: 19px;}
+
+  .cart_wrap .cart_summary {padding: 20px;}
+  .cart_wrap .cart_summary .summary_row.total strong {font-size: 22px;}
+}
+
+@media (max-width: 420px) {
+  .cart_wrap .inner .title_wrap h2 {font-size: 22px;}
+  .cart_wrap .cart_item .img_box {width: 120px; height: 120px;}
+}

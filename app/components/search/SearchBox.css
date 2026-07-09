@@ -1,6 +1,27 @@
 .search_wrap {margin-bottom: 50px;}
 .search_wrap .inner {display: flex; justify-content: center; width: 100%;}
-.search_wrap form {border: 1px solid #000; border-radius: 100px; width: 20%; text-align: center; height: 50px; display: flex; align-items: center; justify-content: center;}
-.search_wrap input {width: 80%; height: 90%; padding: 0; margin: 0; border: none; outline: none;}
+.search_wrap form {
+  border: 1px solid #000;
+  border-radius: 100px;
+  width: clamp(240px, 40vw, 400px);
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: center;
+  height: 50px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search_wrap input {flex: 1 1 auto; min-width: 0; width: auto; height: 90%; padding: 0; margin: 0; border: none; outline: none; background: none;}
 .search_wrap input::-webkit-search-cancel-button {display: none;}
-.search_wrap button {background: none; cursor: pointer;}
+.search_wrap button {flex: 0 0 auto; background: none; cursor: pointer;}
+
+/* 헤더가 햄버거로 바뀌는 지점 — 검색창이 헤더에 붙지 않도록 여백 추가 */
+@media (max-width: 900px) {
+  .search_wrap {margin-top: 40px;}
+}
+
+@media (max-width: 480px) {
+  .search_wrap form {width: 100%;}
+}

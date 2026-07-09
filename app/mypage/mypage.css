@@ -1,0 +1,116 @@
+.mypage_wrap {padding: 40px 0 80px;}
+.mypage_wrap .inner {max-width: 560px; margin: 0 auto;}
+
+.mypage_wrap .title_wrap {margin-bottom: 40px; text-align: center;}
+.mypage_wrap .title_wrap h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #3d2c22;
+}
+.mypage_wrap .title_wrap h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: #C87E5A;
+}
+
+/* 인사말 */
+.mypage_wrap .mypage_greeting {
+  margin-top: 14px;
+  font-size: 16px;
+  color: #777;
+}
+.mypage_wrap .mypage_greeting strong {color: #C87E5A; font-weight: 800;}
+
+/* 내 정보 */
+.mypage_wrap .mypage_info {
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.mypage_wrap .mypage_info .info_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #f2f2f2;
+  background: #fdf9f5;
+}
+.mypage_wrap .mypage_info .info_head h3 {font-size: 17px; font-weight: 800; color: #3d2c22;}
+.mypage_wrap .mypage_info .info_edit {
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid #C87E5A;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  color: #C87E5A;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.mypage_wrap .mypage_info .info_edit:hover {background: #C87E5A; color: #fff;}
+
+.mypage_wrap .mypage_info .info_list {padding: 8px 22px;}
+.mypage_wrap .mypage_info .info_row {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f7f7f7;
+}
+.mypage_wrap .mypage_info .info_row:last-child {border-bottom: none;}
+.mypage_wrap .mypage_info .info_row dt {
+  flex: 0 0 80px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #999;
+}
+.mypage_wrap .mypage_info .info_row dd {
+  flex: 1 1 auto;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+.mypage_wrap .mypage_info .info_postcode {color: #C87E5A; font-weight: 700; margin-right: 6px;}
+
+/* 메뉴 리스트 */
+.mypage_wrap .mypage_menu {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.mypage_wrap .mypage_menu li + li .menu_row {border-top: 1px solid #f2f2f2;}
+.mypage_wrap .menu_row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.15s ease;
+}
+.mypage_wrap .menu_row:hover {background: #fdf9f5;}
+.mypage_wrap .menu_row .menu_icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f8ede3;
+  color: #C87E5A;
+}
+.mypage_wrap .menu_row .menu_label {flex: 1 1 auto; font-size: 16px; font-weight: 700;}
+.mypage_wrap .menu_row .menu_count {font-size: 17px; font-weight: 800; color: #C87E5A;}
+.mypage_wrap .menu_row .menu_arrow {color: #ccc;}

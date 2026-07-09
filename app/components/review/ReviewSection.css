@@ -63,3 +63,9 @@
 .review_section .review_user {font-size: 14px; font-weight: 700; color: #444;}
 .review_section .review_date {font-size: 13px; color: #aaa; margin-left: auto;}
 .review_section .review_content {font-size: 15px; line-height: 1.6; color: #555; white-space: pre-line;}
+
+@media (max-width: 768px) {
+  .review_section {margin-top: 40px; padding-top: 28px;}
+  .review_section .review_summary h3 {font-size: 18px;}
+  .review_section .review_row {padding: 16px;}
+}

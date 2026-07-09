@@ -1,11 +1,13 @@
 interface CartTestPayload {
   type: "cart";
+  amount?: number; // 지정 시 그 금액으로 결제 (0원 테스트용)
 }
 interface DirectTestPayload {
   type: "direct";
   productId: number;
   optionId: number;
   quantity: number;
+  amount?: number; // 지정 시 그 금액으로 결제 (0원 테스트용)
 }
 export type TestConfirmPayload = CartTestPayload | DirectTestPayload;
 

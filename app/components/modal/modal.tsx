@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./modal.css";
 import useLogin from "@/app/hooks/useLogin";
 import { useModalStore } from "@/app/store/modalStore";
+import { useToastStore } from "@/app/store/toastStore";
 
 export default function Modal() {
   const [userId, setUserId] = useState("");
@@ -11,20 +12,30 @@ export default function Modal() {
   const { mutate : login, isPending} = useLogin();
   const closeLoginModal = useModalStore((s) => s.closeLoginModal);
   const openSignupModal = useModalStore((s) => s.openSignupModal);
+  const showToast = useToastStore((s) => s.showToast);
 
 const handleLogin = () => {
-  // TODO: 입력한 userId, password 로 로그인 연결
+  if (!userId || !password) {
+    showToast("아이디와 비밀번호를 입력해주세요.");
+    return;
+  }
+  login(
+    { username: userId, password },
+    {
+      onSuccess: () => closeLoginModal(),
+      onError: (err) => showToast(err.message),
+    }
+  );
 };
 
 const handleTestLogin = () => {
-  login(undefined, {
-    onSuccess: () => {
-      closeLoginModal();
-    },
-    onError: (err) => {
-      console.error("로그인 실패:", err);
-    },
-  });
+  login(
+    { username: "admin", password: "4321" },
+    {
+      onSuccess: () => closeLoginModal(),
+      onError: (err) => showToast(err.message),
+    }
+  );
 };
 
 

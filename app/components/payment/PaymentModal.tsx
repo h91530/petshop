@@ -107,8 +107,8 @@ export default function PaymentModal({
     });
   };
 
-  const handleTestPay = () => {
-    const payload = direct
+  const handleTestPay = (overrideAmount?: number) => {
+    const base = direct
       ? {
           type: "direct" as const,
           productId: direct.productId,
@@ -117,9 +117,16 @@ export default function PaymentModal({
         }
       : { type: "cart" as const };
 
+    const payload =
+      overrideAmount === undefined ? base : { ...base, amount: overrideAmount };
+
     testPay(payload, {
       onSuccess: () => {
-        showToast("테스트 결제가 완료되었어요.");
+        showToast(
+          overrideAmount === 0
+            ? "0원 결제가 완료되었어요."
+            : "테스트 결제가 완료되었어요."
+        );
         onClose();
         router.push("/orders");
       },
@@ -149,8 +156,8 @@ export default function PaymentModal({
           <div id="agreement" />
         </div>
 
-        <button type="button" className="pay_test" onClick={handleTestPay} disabled={testPaying}>
-          {testPaying ? "처리 중..." : "테스트 결제하기"}
+        <button type="button" className="pay_test" onClick={() => handleTestPay()} disabled={testPaying}>
+          {testPaying ? "처리 중..." : "테스트 바로결제"}
         </button>
         <button type="button" className="pay_submit" onClick={handlePay} disabled={!ready}>
           {amount.toLocaleString()}원 결제하기

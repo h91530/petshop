@@ -7,6 +7,23 @@
 #section1 .inner .rating_row {display: flex; align-items: center; gap: 6px; margin-bottom: 10px;}
 #section1 .inner .rating_row .review_count {font-size: 13px; color: #999;}
 #section1 .inner ul {display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;}
+
+@media (max-width: 1024px) {
+  #section1 .inner ul {grid-template-columns: repeat(3, 1fr); gap: 20px;}
+}
+@media (max-width: 768px) {
+  #section1 .inner ul {grid-template-columns: repeat(2, 1fr); gap: 16px;}
+  #section1 .inner ul li {padding: 14px;}
+  #section1 .inner ul li .img_wrap {margin-bottom: 10px;}
+  #section1 .inner h2 {font-size: 15px; min-height: 42px; margin-bottom: 4px;}
+  #section1 .inner p {font-size: 13px; min-height: 54px; margin-bottom: 6px;}
+  #section1 .inner strong {font-size: 18px;}
+}
+@media (max-width: 550px) {
+  #section1 .inner ul {grid-template-columns: 1fr; gap: 14px; justify-items: center;}
+  #section1 .inner ul li {width: 100%; max-width: 320px;}
+  #section1 .inner ul li .img_wrap {aspect-ratio: 1 / 1;}
+}
 #section1 .inner ul li {
   display: flex;
   flex-direction: column;
@@ -14,8 +31,8 @@
   border-radius: 10px;
   padding: 20px;
 }
-#section1 .inner ul li .img_wrap {position: relative; height: 200px; margin-bottom: 15px;}
-#section1 .inner ul li .img_wrap img {}
+#section1 .inner ul li .img_wrap {position: relative; width: 100%; aspect-ratio: 1 / 1; height: auto; margin-bottom: 15px; overflow: hidden; border-radius: 10px;}
+#section1 .inner ul li .img_wrap img {object-fit: cover;}
 #section1 .inner ul li > a {
   display: flex;
   flex-direction: column;
@@ -77,3 +94,8 @@
   box-shadow: 0 5px 12px rgba(176, 104, 68, 0.3);
 }
 #section1 .inner .btn_wrap .detail:active {transform: scale(0.98);}
+
+@media (max-width: 768px) {
+  #section1 .inner .btn_wrap .heart {width: 38px; height: 38px; font-size: 16px;}
+  #section1 .inner .btn_wrap .detail {height: 38px; font-size: 13px;}
+}

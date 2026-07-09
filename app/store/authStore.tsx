@@ -4,6 +4,10 @@ interface User {
   id: number;
   username: string;
   name: string;
+  postcode: string | null;
+  address: string | null;
+  address_detail: string | null;
+  phone: string | null;
 }
 
 interface AuthState {

@@ -1,26 +1,19 @@
-export async function testLogin() {
-  try {
-    const res = await fetch("https://yangti.shop/searching/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        username : "admin",
-        password : "4321",
-      }),
-    });
+export interface LoginPayload {
+  username: string;
+  password: string;
+}
 
-    if (!res.ok) {
-      throw new Error("로그인에 실패했습니다.");
-    }
+export async function login(payload: LoginPayload) {
+  const res = await fetch("https://yangti.shop/searching/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(payload),
+  });
 
-    const data = await res.json();
-
-    return data;
-  } catch (err) {
-    console.error(err);
-    throw err;
+  if (!res.ok) {
+    throw new Error("아이디 또는 비밀번호가 올바르지 않습니다.");
   }
+
+  return res.json();
 }

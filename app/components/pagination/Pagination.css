@@ -1,9 +1,15 @@
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin-top: 40px;
+}
+
+@media (max-width: 480px) {
+  .pagination {margin-top: 28px; gap: 6px;}
+  .pagination .page_btn {min-width: 34px; height: 34px; font-size: 13px;}
 }
 
 .pagination .page_btn {

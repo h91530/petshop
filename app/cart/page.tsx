@@ -106,34 +106,36 @@ function CartList({ items }: { items: CartItem[] }) {
           const qty = getQty(item);
           return (
             <li key={item.cart_id} className="cart_item">
-              <div className="img_box">
-                <Image src={`/${item.image_url}`} width={120} height={120} alt={item.name} />
-              </div>
+              <div className="item_top">
+                <div className="img_box">
+                  <Image src={`/${item.image_url}`} width={120} height={120} alt={item.name} />
+                </div>
 
-              <div className="item_info">
-                <h3 className="item_name">{item.name}</h3>
-                <p className="item_option">{item.option_name}</p>
-                <p className="item_unit">{item.unit_price.toLocaleString()}원</p>
+                <div className="item_info">
+                  <h3 className="item_name">{item.name}</h3>
+                  <p className="item_option">{item.option_name}</p>
+                  <p className="item_unit">{item.unit_price.toLocaleString()}원</p>
 
-                <div className="item_qty">
-                  <button
-                    type="button"
-                    className="qty_btn"
-                    onClick={() => changeQty(item.cart_id, -1)}
-                    disabled={qty <= 1}
-                    aria-label="수량 감소"
-                  >
-                    −
-                  </button>
-                  <span className="qty_num">{qty}</span>
-                  <button
-                    type="button"
-                    className="qty_btn"
-                    onClick={() => changeQty(item.cart_id, 1)}
-                    aria-label="수량 증가"
-                  >
-                    +
-                  </button>
+                  <div className="item_qty">
+                    <button
+                      type="button"
+                      className="qty_btn"
+                      onClick={() => changeQty(item.cart_id, -1)}
+                      disabled={qty <= 1}
+                      aria-label="수량 감소"
+                    >
+                      −
+                    </button>
+                    <span className="qty_num">{qty}</span>
+                    <button
+                      type="button"
+                      className="qty_btn"
+                      onClick={() => changeQty(item.cart_id, 1)}
+                      aria-label="수량 증가"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
 

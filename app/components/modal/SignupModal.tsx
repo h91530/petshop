@@ -6,20 +6,44 @@ import { useModalStore } from "@/app/store/modalStore";
 import { useToastStore } from "@/app/store/toastStore";
 import { useSignup } from "@/app/hooks/useSignup";
 import type { signUp } from "@/app/data/signup/signup";
+import { openPostcode } from "@/app/lib/openPostcode";
 
 export default function SignupModal() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const [postcode, setPostcode] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [addressDetail, setAddressDetail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const { mutate: signUp, isPending } = useSignup();
 
   const openLoginModal = useModalStore((s) => s.openLoginModal);
   const showToast = useToastStore((s) => s.showToast);
 
+  const handleFindAddress = () => {
+    openPostcode(({ zonecode, address }) => {
+      setPostcode(zonecode);
+      setAddress(address);
+    });
+  };
+
+  // 숫자만 남겨서 010-1234-5678 형식으로 자동 하이픈
+  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 11);
+    let formatted = digits;
+    if (digits.length > 7) {
+      formatted = `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+    } else if (digits.length > 3) {
+      formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+    }
+    setPhone(formatted);
+  };
+
   const handleSignup = (): void => {
     if (!username || !password || !name) {
-      showToast("모든 항목을 입력해주세요.");
+      showToast("아이디, 이름, 비밀번호는 필수예요.");
       return;
     }
     if (password !== passwordConfirm) {
@@ -31,6 +55,10 @@ export default function SignupModal() {
       username,
       password,
       name,
+      postcode: postcode || undefined,
+      address: address || undefined,
+      addressDetail: addressDetail || undefined,
+      phone: phone || undefined,
     };
     signUp(signData, {
       onSuccess: (): void => {
@@ -87,8 +115,50 @@ export default function SignupModal() {
             placeholder="비밀번호를 다시 입력해주세요"
           />
         </div>
-        <button type="button" onClick={handleSignup}>
-          회원가입
+
+        <div className="field">
+          <label htmlFor="signup_postcode">주소 <span className="optional">(선택)</span></label>
+          <div className="addr_row">
+            <input
+              id="signup_postcode"
+              type="text"
+              value={postcode}
+              readOnly
+              placeholder="우편번호"
+            />
+            <button type="button" className="addr_find" onClick={handleFindAddress}>
+              주소 검색
+            </button>
+          </div>
+        </div>
+        <input
+          type="text"
+          value={address}
+          readOnly
+          placeholder="기본 주소 (검색으로 입력)"
+        />
+        <input
+          type="text"
+          value={addressDetail}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setAddressDetail(e.target.value)}
+          placeholder="상세 주소를 입력해주세요"
+        />
+
+        <div className="field">
+          <label htmlFor="signup_phone">전화번호 <span className="optional">(선택)</span></label>
+          <input
+            id="signup_phone"
+            type="tel"
+            inputMode="numeric"
+            maxLength={13}
+            value={phone}
+            onChange={handlePhoneChange}
+            placeholder="010-1234-5678"
+          />
+        </div>
+
+        <button type="button" onClick={handleSignup} disabled={isPending}>
+          {isPending ? "가입 중..." : "회원가입"}
         </button>
         <p className="modal_switch">
           이미 회원이신가요?{" "}

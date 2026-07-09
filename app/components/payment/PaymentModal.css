@@ -93,7 +93,10 @@
   cursor: pointer;
   transition: all 0.15s ease;
 }
-.pay_test:hover {background: #faf0e9;}
+.pay_test:hover:not(:disabled) {background: #faf0e9;}
+.pay_test:disabled {opacity: 0.5; cursor: not-allowed;}
+/* 연속된 테스트 버튼끼리는 위 여백 제거 */
+.pay_test + .pay_test {margin-top: 0;}
 
 @keyframes pay_fade {
   from { opacity: 0; }

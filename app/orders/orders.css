@@ -149,5 +149,81 @@
   padding: 18px 24px;
   border-top: 1px solid #f0e6dd;
 }
-.orders_wrap .order_foot span {font-size: 15px; font-weight: 600; color: #555;}
-.orders_wrap .order_foot strong {font-size: 22px; font-weight: 800; color: #C87E5A;}
+.orders_wrap .order_foot .foot_left {display: flex; align-items: center; gap: 12px;}
+.orders_wrap .order_foot .foot_left span {font-size: 15px; font-weight: 600; color: #555;}
+.orders_wrap .order_foot .foot_left strong {font-size: 22px; font-weight: 800; color: #C87E5A;}
+
+/* 반품 신청 버튼 */
+.orders_wrap .order_foot .return_btn {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #777;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.orders_wrap .order_foot .return_btn:hover {border-color: #C87E5A; color: #C87E5A;}
+
+/* 반품 상태 배지 */
+.orders_wrap .order_foot .return_status {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.orders_wrap .order_foot .rs_REQUESTED {background: #fff4e0; color: #C87E5A;}
+.orders_wrap .order_foot .rs_APPROVED,
+.orders_wrap .order_foot .rs_COMPLETED {background: #e5f4ea; color: #2e8b57;}
+.orders_wrap .order_foot .rs_REJECTED {background: #fdeaea; color: #d9534f;}
+
+/* 반품 사유 입력 모달 */
+.return_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.return_modal {
+  width: 400px;
+  max-width: 100%;
+  padding: 28px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+.return_modal h3 {font-size: 18px; font-weight: 800; color: #3d2c22; margin-bottom: 16px;}
+.return_modal textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 16px;
+}
+.return_modal textarea:focus {outline: none; border-color: #C87E5A;}
+.return_modal .return_modal_btns {display: flex; gap: 10px;}
+.return_modal .return_modal_btns button {
+  flex: 1 1 0;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.return_modal .rm_cancel {border: 1.5px solid #ddd; background: #fff; color: #777;}
+.return_modal .rm_cancel:hover {background: #f5f5f5;}
+.return_modal .rm_submit {border: none; background: #C87E5A; color: #fff;}
+.return_modal .rm_submit:hover:not(:disabled) {background: #B06844;}
+.return_modal .rm_submit:disabled {background: #d8c8bb; cursor: not-allowed;}
