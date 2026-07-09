@@ -72,7 +72,7 @@ export default function SignupModal() {
   };
 
   return (
-    <div className="modal_wrap">
+    <div className="modal_wrap signup_modal">
       <div className="inner">
         <h2>회원가입</h2>
         <div className="field">

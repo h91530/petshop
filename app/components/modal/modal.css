@@ -39,6 +39,15 @@
   .modal_wrap .inner input {height: 46px; font-size: 16px;}
   .modal_wrap .inner button {height: 46px; font-size: 15px;}
   .modal_wrap .inner .addr_row .addr_find {height: 46px; padding: 0 14px; font-size: 14px;}
+
+  /* 회원가입은 필드가 많아 모바일에서 화면이 꽉 차 보임 → 더 컴팩트하게 */
+  .signup_modal .inner {gap: 8px; max-height: 88vh; padding: 24px 20px;}
+  .signup_modal .inner h2 {font-size: 18px; margin-bottom: 0;}
+  .signup_modal .inner .field {gap: 4px;}
+  .signup_modal .inner input {height: 40px;}
+  .signup_modal .inner button {height: 42px; margin-top: 4px;}
+  .signup_modal .inner .addr_row .addr_find {height: 40px;}
+  .signup_modal .inner .modal_switch {margin-top: 0;}
 }
 
 @media (max-width: 380px) {
