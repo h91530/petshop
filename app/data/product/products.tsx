@@ -106,3 +106,25 @@ export async function fetchProductsServer(): Promise<ProductType[]> {
 
   return json.data.map(mapProduct);
 }
+
+// 상품 상세 페이지(서버 컴포넌트)에서 호출 — 목록 전체를 안 가져오고 해당 상품만 요청
+export async function fetchProductServer(id: number): Promise<ProductType | null> {
+  const res = await fetch(`${BASE_URL}/products/${id}`, {
+    cache: "no-store",
+  });
+
+  if (res.status === 404) {
+    return null;
+  }
+  if (!res.ok) {
+    throw new Error("상품을 불러오지 못했습니다");
+  }
+
+  const json: { success: boolean; data: RawProduct } = await res.json();
+
+  if (!json.success) {
+    return null;
+  }
+
+  return mapProduct(json.data);
+}
