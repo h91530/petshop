@@ -8,6 +8,7 @@ import Toast from './components/toast/Toast'
 import ConfirmModal from './components/confirm/ConfirmModal'
 
 export const metadata: Metadata = {
+  title: "펫샵",
   icons: {
     icon: "/favicon-32x32.png",
   },
