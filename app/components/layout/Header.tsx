@@ -9,6 +9,7 @@ import useLogout from '@/app/hooks/useLogout';
 import { useAuthStore } from '@/app/store/authStore';
 import { useProducts } from '@/app/hooks/useProducts';
 import { useCartCount } from '@/app/hooks/useCart';
+import { useRouter } from 'next/navigation';
 
 
 export default function Header() {
@@ -19,6 +20,7 @@ export default function Header() {
     const {data : products} = useProducts();
     const {data : cartCount} = useCartCount();
     const [menuOpen, setMenuOpen] = useState(false);
+    const router = useRouter();
 
     const closeMenu = () => setMenuOpen(false);
 
@@ -27,6 +29,9 @@ export default function Header() {
         logout(undefined, {
             onSuccess: () => {
                 openModal();
+                // 홈 화면의 상품 목록은 서버 컴포넌트가 로그인 상태 기준으로 내려준 데이터라
+                // 로그아웃 직후에도 다시 실행시켜 찜 표시를 초기화해야 함
+                router.refresh();
             },
         });
     }

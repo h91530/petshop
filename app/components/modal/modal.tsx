@@ -5,6 +5,7 @@ import "./modal.css";
 import useLogin from "@/app/hooks/useLogin";
 import { useModalStore } from "@/app/store/modalStore";
 import { useToastStore } from "@/app/store/toastStore";
+import { useRouter } from "next/navigation";
 
 export default function Modal() {
   const [userId, setUserId] = useState("");
@@ -13,6 +14,7 @@ export default function Modal() {
   const closeLoginModal = useModalStore((s) => s.closeLoginModal);
   const openSignupModal = useModalStore((s) => s.openSignupModal);
   const showToast = useToastStore((s) => s.showToast);
+  const router = useRouter();
 
 const handleLogin = () => {
   if (!userId || !password) {
@@ -22,7 +24,11 @@ const handleLogin = () => {
   login(
     { username: userId, password },
     {
-      onSuccess: () => closeLoginModal(),
+      onSuccess: () => {
+        closeLoginModal();
+        // 홈 화면 상품 목록(찜 표시)을 로그인한 사용자 기준으로 다시 받아오도록 갱신
+        router.refresh();
+      },
       onError: (err) => showToast(err.message),
     }
   );
@@ -32,7 +38,10 @@ const handleTestLogin = () => {
   login(
     { username: "admin", password: "4321" },
     {
-      onSuccess: () => closeLoginModal(),
+      onSuccess: () => {
+        closeLoginModal();
+        router.refresh();
+      },
       onError: (err) => showToast(err.message),
     }
   );
