@@ -25,5 +25,8 @@ export async function logoutRequest() {
     throw new Error("로그아웃에 실패했습니다.");
   }
 
+  // /me 재조회(네트워크 왕복)를 기다리지 않고 바로 로그아웃 상태로 반영
+  useAuthStore.getState().setUser(null);
+
   return res.json();
 }

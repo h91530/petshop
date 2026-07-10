@@ -4,6 +4,7 @@ import { useProductAction } from "@/app/hooks/useProductAction";
 import Link from "next/link";
 import { memo, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/app/store/authStore";
 
 function ProductActions({
   productId,
@@ -14,6 +15,7 @@ function ProductActions({
 }) {
   const { mutate: like, isPending } = useProductAction();
   const router = useRouter();
+  const isLoggedIn = useAuthStore((s) => !!s.user);
 
   // 서버가 내려준 값으로 화면을 먼저 그리고, 클릭하면 응답 기다리지 않고 바로 반영(낙관적 업데이트)
   const [optimisticLike, setOptimisticLike] = useState(productLike);
@@ -22,6 +24,10 @@ function ProductActions({
   useEffect(() => {
     setOptimisticLike(productLike);
   }, [productLike]);
+
+  // 로그아웃은 setUser(null)이 즉시(동기적으로) 반영되니까,
+  // router.refresh()의 서버 왕복을 기다리지 않고 로그인 스토어 기준으로 바로 하트를 꺼줌
+  const displayLike = isLoggedIn && optimisticLike;
 
   const handleLike = () => {
     const next = !optimisticLike;
@@ -38,12 +44,12 @@ function ProductActions({
   return (
     <div className="btn_wrap">
       <button
-        className={`heart ${optimisticLike ? "active" : ""}`}
+        className={`heart ${displayLike ? "active" : ""}`}
         aria-label="찜하기"
         onClick={handleLike}
         disabled={isPending}
       >
-        {optimisticLike ? "♥" : "♡"}
+        {displayLike ? "♥" : "♡"}
       </button>
       <Link href={`/products/${productId}`} className="detail">
         상세보기
