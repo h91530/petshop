@@ -56,7 +56,7 @@ function LikeContent() {
                   <div className="item_info">
                     <h3 className="item_name">{product.name}</h3>
                     <p className="item_desc">{product.desc}</p>
-                    <p className="item_like">♥ {product.like_count}</p>
+                    <p className="item_like">♥ {product.like_count} ({product.rating_count})</p>
                   </div>
                 </Link>
 

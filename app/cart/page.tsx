@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCartCount, useCartDelete, useCartplustMinus } from "@/app/hooks/useCart";
+import { useProducts } from "@/app/hooks/useProducts";
 import type { CartItem } from "@/app/data/cart/cartCount";
 import { useConfirmStore } from "@/app/store/confirmStore";
 import RequireLogin from "@/app/components/auth/RequireLogin";
@@ -56,6 +57,7 @@ function CartContent() {
 function CartList({ items }: { items: CartItem[] }) {
     const { mutate: deleteCart, isPending : deleteCartLoading, isError : deleteCartLoadingError} = useCartDelete()
     const { mutate: changeCartQty } = useCartplustMinus()
+    const { data: products } = useProducts()
     const [payOpen, setPayOpen] = useState(false)
     const [page, setPage] = useState(1)
 
@@ -104,9 +106,10 @@ function CartList({ items }: { items: CartItem[] }) {
       <ul className="cart_list">
         {paged.map((item) => {
           const qty = getQty(item);
+          const product = products?.find((p) => p.id === item.product_id);
           return (
             <li key={item.cart_id} className="cart_item">
-              <div className="item_top">
+              <Link href={`/products/${item.product_id}`} className="item_top">
                 <div className="img_box">
                   <Image src={`/${item.image_url}`} width={120} height={120} alt={item.name} />
                 </div>
@@ -115,12 +118,17 @@ function CartList({ items }: { items: CartItem[] }) {
                   <h3 className="item_name">{item.name}</h3>
                   <p className="item_option">{item.option_name}</p>
                   <p className="item_unit">{item.unit_price.toLocaleString()}원</p>
+                  <p className="item_like">♥ {product?.like_count ?? 0} ({product?.rating_count ?? 0})</p>
 
                   <div className="item_qty">
                     <button
                       type="button"
                       className="qty_btn"
-                      onClick={() => changeQty(item.cart_id, -1)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        changeQty(item.cart_id, -1);
+                      }}
                       disabled={qty <= 1}
                       aria-label="수량 감소"
                     >
@@ -130,14 +138,18 @@ function CartList({ items }: { items: CartItem[] }) {
                     <button
                       type="button"
                       className="qty_btn"
-                      onClick={() => changeQty(item.cart_id, 1)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        changeQty(item.cart_id, 1);
+                      }}
                       aria-label="수량 증가"
                     >
                       +
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
 
               <div className="item_right">
                 <button type="button" className="del_btn" aria-label="삭제" onClick={() => handleDelete(item.cart_id)}>

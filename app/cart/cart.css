@@ -56,6 +56,8 @@
   gap: 24px;
   flex: 1 1 auto;
   min-width: 0;
+  text-decoration: none;
+  color: inherit;
 }
 .cart_wrap .cart_item .img_box {
   flex: 0 0 auto;
@@ -80,6 +82,7 @@
   font-weight: 600;
 }
 .cart_wrap .cart_item .item_info .item_unit {font-size: 14px; color: #888; margin-bottom: 12px;}
+.cart_wrap .cart_item .item_info .item_like {font-size: 14px; font-weight: 700; color: #C87E5A; margin-bottom: 12px;}
 
 /* 수량 조절 */
 .cart_wrap .cart_item .item_qty {
